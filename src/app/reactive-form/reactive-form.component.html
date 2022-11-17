@@ -1,0 +1,39 @@
+
+<div class="container">
+  <form [formGroup] = 'signUpForm' (ngSubmit)="SubmitData(signUpForm)">
+
+    <div>
+     <label for="FirstName"> Enter First Name </label>
+     <input type="text" id="FirstName" name="FirstName" formControlName='FirstName' required>
+       
+     <div *ngIf="submitted && signUpForm.controls['FirstName'].errors">
+   
+      <div *ngIf="signUpForm.controls['FirstName'].hasError('required')">
+       Title is required</div>
+       <div *ngIf="signUpForm.controls['FirstName'].hasError('minlength')">
+        minlength is required</div>
+    </div>
+  </div>
+    <div>
+      <label for="LastName"> Enter Last Name </label>
+      <input type="text" id="LastName" name="LastName" formControlName='LastName'>
+      <div *ngIf="submitted && signUpForm.controls['LastName'].errors">
+   
+        <div *ngIf="signUpForm.controls['FirstName'].hasError('required')">
+         Last Name is required</div>
+         
+      </div>
+     </div>
+
+     <div>
+      <label for="Email"> Enter Email </label>
+      <input type="text" id="Email" name="Email" formControlName='Email'>
+     </div>
+
+     <div>
+      <label for="Password"> Enter Email </label>
+      <input type="text" id="Password" name="Password" formControlName='Password'>
+     </div>
+    <button type="submit"> Register </button>
+  </form>
+</div>

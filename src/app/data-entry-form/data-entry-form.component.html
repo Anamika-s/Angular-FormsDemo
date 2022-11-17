@@ -1,0 +1,49 @@
+<div class="container">
+
+  <form #regForm="ngForm" (ngSubmit)="RegisterUser(regForm)">
+ 
+  <div class="form-group">
+  <label for="firstName">First Name</label>
+   
+<input type="text" name="firstName" pattern ="^[A-Z a-z]+" required minlength="5" maxlength="10"  #firstName="ngModel" ngModel class="form-control">
+ 
+    
+  <!-- <div *ngIf="firstName.errors.minlength"> FirstName is must </div>  -->
+  <div *ngIf="firstName.touched && firstName.invalid">
+     
+   <div *ngIf="firstName.errors?.['required']">
+    <span class="error"> Name is must </span>
+   </div>
+   <div *ngIf="firstName.errors?.['pattern']">
+    <span class="error"> Name can contain only alphabets </span>
+   </div>
+   <div *ngIf="firstName.errors?.['minlength']">
+     <span class="error"> Minimum 5 characters are needed  </span> </div>
+ </div>
+
+</div>
+
+<div class="form-group">
+  <label for="email">email</label>
+   
+<input type="email" name="email" required email  #email="ngModel" ngModel class="form-control">
+ 
+    
+  <!-- <div *ngIf="firstName.errors.minlength"> FirstName is must </div>  -->
+  <div *ngIf="email.touched && email.invalid">
+     
+   <div *ngIf="firstName.errors?.['required']">
+    <span class="error"> email is must </span>
+   </div> 
+
+   <div *ngIf="firstName.errors?.['email']">
+    <span class="error"> email is not in correct format </span>
+   </div> 
+ </div>
+
+</div>
+
+
+<button type="submit" [disabled]="regForm.invalid">Submit</button>
+  </form>
+  </div>
